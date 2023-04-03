@@ -1,0 +1,12 @@
+django
+gunicorn
+python-dotenv
+whitenoise
+django-ninja
+pandas
+psycopg2>=2.8.6,<2.9
+django-allauth
+dj-rest-auth
+django-rest-framework
+# psycopg2-binary
+# mysqlclient
