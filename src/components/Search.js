@@ -1,4 +1,5 @@
 import { Component } from "../core/util";
+import videoStore, { searchVideos } from '../store/video'
 
 export default class Search extends Component {
     render() {
@@ -12,17 +13,21 @@ export default class Search extends Component {
 
         const inputEL = this.el.querySelector('input')
         inputEL.addEventListener('input', () => {
-
+            // 사용자가 값을 입력하면
+            videoStore.state.searchText = inputEL.value
         })
         inputEL.addEventListener('keydown', event => {
-            if (event.key === 'Enter') {
-
+            // 사용자가 값을 입력했을때만 동작
+            if (event.key === 'Enter' && videoStore.state.searchText.trim()) {
+                searchVideos(1)
             }
         })
 
         const btnEl = this.el.querySelector('.btn')
         btnEl.addEventListener('click', () => {
-            
+            if (videoStore.state.searchText.trim()) {
+                searchVideos(1)
+            }
         })
     }
 }
