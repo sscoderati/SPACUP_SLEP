@@ -5,7 +5,7 @@ export default class Search extends Component {
     render() {
         this.el.classList.add('search')
         this.el.innerHTML = /* html */ `
-            <input placeholder="찾고 싶은 수어 표현을 검색해보세요!"/>
+            <input placeholder="검색어를 입력해주세요!"/>
             <button class="btn btn-primary">
                 검색!
             </button>
