@@ -4,6 +4,7 @@ import axios from "axios";
 const store = new Store({
     searchText: '',
     page: 1,
+    video: {},
     videos: [],
     loading: false,
     message: '찾고 싶은 수어 표현을 검색해보세요!'
@@ -45,4 +46,17 @@ export const searchVideos = async page => {
         store.state.loading = false
     }
     
+}
+
+export const getVideoDetails = async title => {
+    // title 값을 받아서 store.state.videos 내 해당 video를 검색하고 발견하면 상태에 할당
+    try {
+        store.state.videos.forEach(v => {
+            if (v['title'] === title) {
+                store.state.video = v
+            }
+        })
+    } catch(error) {
+        console.log('getVideoDetails error: ', error)
+    }
 }
