@@ -8,16 +8,8 @@ import xmltodict
 from django.http import JsonResponse
 
 PROXY_URL = f'http://api.kcisa.kr/openapi/service/rest/meta13/getCTE01701?serviceKey={settings.API_KEY}&numOfRows=12500'
-class ApiKey(APIKeyHeader):
-    param_name = "X-API-Key"
-
-    def authenticate(self, request, key):
-        if key == "apikey":
-            return key
 
 api = NinjaAPI()
-
-header_key = ApiKey()
 
 def create_res(status, message,data=None):
     return {
@@ -28,7 +20,7 @@ def create_res(status, message,data=None):
         'data' : data
     }
 
-@api.get('/lang', auth=header_key)
+@api.get('/lang')
 def get_lang(request, title:str = None):
     if title:
       title_cache = cache.get(title)
