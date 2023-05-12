@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
 
     'core',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -61,10 +62,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:5085',
-                        'http://localhost:5085', 'http://127.0.0.1:5085']
+                        'http://localhost:5085', 'http://127.0.0.1:5085','specup.kro.kr', 'www.specup.kro.kr', 'specup']
 
 ROOT_URLCONF = 'slep.urls'
 
@@ -176,3 +178,7 @@ CACHES = {
 }
 
 API_KEY = '891a9d78-cd84-406e-a182-7472e7b6919f'
+
+CORS_ORIGIN_WHITELIST = ['http://0.0.0.0:5085',
+                        'http://localhost:5085', 'http://127.0.0.1:5085','specup.kro.kr', 'http://www.specup.kro.kr', 'specup']
+CORS_ALLOW_CREDENTIALS = True
