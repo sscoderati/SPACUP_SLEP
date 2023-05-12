@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
-
-    'core',
     'corsheaders',
 ]
 
@@ -66,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:5085',
-                        'http://localhost:5085', 'http://127.0.0.1:5085','specup.kro.kr', 'www.specup.kro.kr', 'specup']
+                        'http://localhost:5085', 'http://127.0.0.1:5085', 'http://www.specup.kro.kr']
 
 ROOT_URLCONF = 'slep.urls'
 
@@ -164,7 +162,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-AUTH_USER_MODEL = 'core.User'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -178,6 +175,3 @@ CACHES = {
 }
 
 API_KEY = '891a9d78-cd84-406e-a182-7472e7b6919f'
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
