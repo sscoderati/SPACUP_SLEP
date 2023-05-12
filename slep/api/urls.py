@@ -15,7 +15,7 @@ class ApiKey(APIKeyHeader):
         if key == "apikey":
             return key
 
-api = NinjaAPI(csrf=True)
+api = NinjaAPI()
 
 header_key = ApiKey()
 
