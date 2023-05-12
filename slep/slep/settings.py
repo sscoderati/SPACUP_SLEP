@@ -169,3 +169,13 @@ AUTH_USER_MODEL = 'core.User'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True
+
+# Redis Cache
+CACHES = {  
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis-service:6379"
+    }
+}
+
+API_KEY = '891a9d78-cd84-406e-a182-7472e7b6919f'
