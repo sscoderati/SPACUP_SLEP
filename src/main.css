@@ -178,3 +178,41 @@ body {
 .videos .video .info .title {
     color: var(--color-white);
 }
+
+.the-video {
+    color: var(--color-black-50);
+    gap: 70px;
+}
+
+.the-video video {
+    flex-shrink: 0;
+    --width: 500px;
+    width: var(--width);
+    height: calc(var(--width) / 5 * 3);
+}
+
+.the-video .labels {
+    flex-grow: 1;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--color-black-30);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.the-video .images img{
+    flex-shrink: 1;
+    --width: 180px;
+    width: var(--width);
+    height: calc(var(--width) / 2 * 3);
+}
+
+.the-video .images .img-layout {
+    display: flex;
+}
+
+.the-video h3 {
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--color-hover);
+    margin: 24px 0 6px;
+}
