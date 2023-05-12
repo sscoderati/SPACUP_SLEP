@@ -36,21 +36,15 @@ def get_lang(request, title:str = None):
       if title_cache == None:
           all_cache = cache.get('data')
           if all_cache == None:
-              return
-          title_cache = list(filter(lambda x: title in x['title'] , all_cache))
+              all_cache = requests.get(PROXY_URL)
+              cache.set('data', xmltodict.parse(all_cache.content.decode()).get('response').get('body').get('items').get('item'),60*60*24)
+          title_cache = list(filter(lambda x: title in x['title'] , cache.get('data')))
 
           cache.set(title, title_cache, 60*60*24)
       
 
       return JsonResponse(create_res(200,'ok',title_cache))
 
-@api.get('/all-lang')
-def test_cache(request):
-    if cache.get('data') == None:
-      res = requests.get(PROXY_URL)
-      cache.set('data', xmltodict.parse(res.content.decode()).get('response').get('body').get('items').get('item'),60*60*24)
-    return list(cache.get('data'))
-    
 
 urlpatterns = [
     path('', api.urls),
