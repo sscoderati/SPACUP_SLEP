@@ -331,3 +331,10 @@ footer a:hover {
 .about a:hover {
     text-decoration: underline;
 }
+
+.not-found h1{
+    font-size: 70px;
+    font-weight: 700;
+    color: var(--color-black-10);
+    text-align: center;
+}
