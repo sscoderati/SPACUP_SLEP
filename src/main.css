@@ -302,3 +302,32 @@ footer a:hover {
     color: var(--color-hover);
     margin: 24px 0 6px;
 }
+
+.about .photo {
+    width: 230px;
+    height: 230px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+.about .name {
+    font-size: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.about a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.about a:hover {
+    text-decoration: underline;
+}

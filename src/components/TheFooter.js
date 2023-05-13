@@ -1,4 +1,5 @@
 import { Component } from "../core/util";
+import aboutStore from "../store/about";
 
 export default class TheFooter extends Component {
     constructor() {
@@ -10,7 +11,7 @@ export default class TheFooter extends Component {
     render() {
         this.el.innerHTML = /* html */ `
             <div>
-                <a href="https://github.com/sscoderati/SPACUP_SLEP">This Project's Repository</a>
+                <a href="${aboutStore.state.github}">This Project's Repository</a>
             </div>
             <div>
                 ${new Date().getFullYear()}
