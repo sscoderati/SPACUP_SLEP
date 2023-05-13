@@ -76,6 +76,92 @@ body {
 }
 }
 
+header {
+    padding: 20px 40px;
+    background-color: var(--color-area);
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+header .logo {
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--color-black-50);
+    text-decoration: none;
+    font-weight: 700;
+    
+}
+
+header .logo span {
+    color: var(--color-primary);
+}
+
+header nav ul {
+    display: flex;
+    gap: 14px;
+}
+
+header nav ul li {
+    list-style-type: none;
+}
+
+header nav ul li:hover {
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+header nav ul li a {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-black-50);
+    text-decoration: none;
+}
+
+header nav ul li a.active {
+    color: var(--color-primary);
+}
+
+header .user {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-area);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    margin: auto;
+    transition: .3s;
+}
+
+header .user:hover {
+    transform: scale(1.2);
+}
+
+header .user img {
+    width: 100%;
+}
+
+footer {
+    padding: 40px 40px 60px;
+    text-align: center;
+}
+
+footer a {
+    color: var(--color-black-20);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 .headline {
     margin-bottom: 40px;
 }
