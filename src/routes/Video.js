@@ -10,7 +10,6 @@ export default class Video extends Component {
         const vidSrc = linkArr[0].slice(linkArr[0].indexOf(':') + 1)
         let imgArr = linkArr[1].split(',')
         imgArr[0] = imgArr[0].slice(imgArr[0].indexOf(':') + 1)
-        console.log(imgArr)
 
         this.el.classList.add('container', 'the-video')
         this.el.innerHTML = /* html */ `
