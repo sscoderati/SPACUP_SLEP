@@ -25,6 +25,17 @@ body {
     margin: 0 auto;
     padding: 40px 0;
 }
+@media (max-width:1200px) {
+    .container {
+        padding: 40px;
+    }
+}
+
+@media (max-width:600px) {
+    .container {
+        padding: 20px;
+    }
+}
 
 .btn {
     height: 50px;
@@ -148,6 +159,20 @@ header .user img {
     width: 100%;
 }
 
+@media (max-width: 600px) {
+    header {
+        padding: 14px 20px;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    header .user {
+        right: 20px;
+    }
+}
+
 footer {
     padding: 40px 40px 60px;
     text-align: center;
@@ -179,6 +204,12 @@ footer a:hover {
 
 .headline p {
     color: var(--color-black-30);
+}
+
+@media (max-width:600px) {
+    .headline h1 {
+        font-size: 60px;
+    }
 }
 
 .search {
@@ -301,6 +332,25 @@ footer a:hover {
     font-family: 'Noto Sans KR', sans-serif;
     color: var(--color-hover);
     margin: 24px 0 6px;
+}
+
+@media (max-width:1200px) {
+    .the-video {
+        gap: 30px;
+    }
+    .the-video video {
+        --width:300px
+    }
+}
+
+@media (max-width:720px) {
+    .the-video {
+        display: block;
+    }
+
+    .the-video .images .img-layout {
+        display: block;
+    }
 }
 
 .about .photo {
