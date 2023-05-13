@@ -1,0 +1,29 @@
+{
+  "name": "spacup_slep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sscoderati/SPACUP_SLEP.git"
+  },
+  "author": "Changgi Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sscoderati/SPACUP_SLEP/issues"
+  },
+  "homepage": "https://github.com/sscoderati/SPACUP_SLEP#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "buffer": "^5.7.1",
+    "parcel": "^2.8.3"
+  },
+  "proxy": "http://localhost:1234"
+}
