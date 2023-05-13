@@ -21,6 +21,7 @@ export const searchVideos = async page => {
     // const res = await fetch(`http://api.kcisa.kr/openapi/service/rest/meta13/getCTE01701?serviceKey=891a9d78-cd84-406e-a182-7472e7b6919f&pageNo=${page}`)
     try {
         const res = await axios.get(`http://api.kcisa.kr/openapi/service/rest/meta13/getCTE01701?serviceKey=891a9d78-cd84-406e-a182-7472e7b6919f&numOfRows=12530&pageNo=${page}`)
+        // const res = await axios.get(`http://www.specup.kro.kr/api/lang?title=${store.state.searchText}`)
         const Data = res.data.response.body.items.item
         const Response = res.statusText
 
