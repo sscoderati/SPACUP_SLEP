@@ -27,9 +27,8 @@ export default class Video extends Component {
                 <h3>그림 설명</h3>
                 <div class="img-layout">
                     ${imgArr.map(imgEl => {
-                        // return imgEl !== ',' ? `<img src=${imgEl} />` : ''
                         return `<img src="${imgEl}" />`
-                    })}
+                    }).join('')}
                 </div>
             </div>
             `
