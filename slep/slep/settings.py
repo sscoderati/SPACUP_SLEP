@@ -175,3 +175,15 @@ CACHES = {
 }
 
 API_KEY = '891a9d78-cd84-406e-a182-7472e7b6919f'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://specup.kro.kr",
+    "https://sub.specup.kro.kr",
+    "http://localhost:5085",
+    "http://127.0.0.1:5085",
+]
+# CSRF 신뢰할 수 있는 출처
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.specup.kro.kr",
+]
