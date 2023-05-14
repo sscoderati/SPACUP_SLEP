@@ -32,7 +32,7 @@ def get_lang(request, title:str = None):
               cache.set('data', xmltodict.parse(all_cache.content.decode()).get('response').get('body').get('items').get('item'),60*60*24)
           title_cache = list(filter(lambda x: title in x['title'] , cache.get('data')))
 
-          cache.set(title, title_cache, 60*60*24)
+          cache.set(title, title_cache, 60*60*24*365)
       
 
       return JsonResponse(create_res(200,'ok',title_cache))
