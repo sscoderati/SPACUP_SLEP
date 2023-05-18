@@ -45,7 +45,7 @@ export default class TheHeader extends Component {
                 </ul>
             </nav>
             <a href="#/about" class="user">
-                <img src="https://drive.google.com/uc?id=1f2HiqgMj6xPkC-8epwC-1s0cOMT6ih45" alt="SLEP">
+                <img src="https://drive.google.com/uc?export=view&id=1f2HiqgMj6xPkC-8epwC-1s0cOMT6ih45" alt="SLEP">
             </a>
         `
     }
