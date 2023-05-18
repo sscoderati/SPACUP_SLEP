@@ -3,8 +3,8 @@ import videoStore, { getVideoDetails } from '../store/video'
 
 export default class Video extends Component {
     render() {
-        getVideoDetails(decodeURI(history.state.title))
-        const Video = videoStore.state.video
+        getVideoDetails(Number(history.state['pk']))
+        const Video = videoStore.state.video.fields
         const linkSet = Video['subDescription']
         const linkArr = linkSet.split('||')
         const vidSrc = linkArr[0].slice(linkArr[0].indexOf(':') + 1)
