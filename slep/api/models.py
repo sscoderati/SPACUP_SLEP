@@ -2,7 +2,7 @@ from django.db import models
 
 
 class SignLanguage(models.Model):
-    title = models.TextField()
+    title = models.TextField(unique=True)
     alternativeTitle = models.TextField()
     language = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)

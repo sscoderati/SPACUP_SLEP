@@ -78,7 +78,16 @@ def get_signlanguage(request, title:str):
     data_json = serializers.serialize('json', data)
 
     return HttpResponse(data_json, content_type='application/json')
+
+class DataArraySchema(Schema):
+    array:list
+
+@api.post('/array')
+def post_array_len_30(request, data:DataArraySchema):
+    if len(data.array) != 30:
+        return JsonResponse({'code':400, 'message': 'bad request'})
     
+    return JsonResponse({'code':200, 'data': data.array}, safe=False)
     
     
 
