@@ -11,13 +11,13 @@ export default class VideoItem extends Component {
     render() {
         const { video } = this.props
 
-        this.el.setAttribute('href', `#/video?title=${video.title}`)
+        this.el.setAttribute('href', `#/video?pk=${video.pk}`)
         this.el.classList.add('video')
-        this.el.style.backgroundImage = `url(${video.referenceIdentifier})`
+        this.el.style.backgroundImage = `url(${video.fields["referenceIdentifier"]})`
         this.el.innerHTML = /* html */ `
         <div class="info">
             <div class="title">
-                ${video.title}
+                ${video.fields["title"]}
             </div>
         </div>
         `

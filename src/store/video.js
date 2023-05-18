@@ -22,13 +22,12 @@ export const searchVideos = async page => {
         const res = await axios.get(`https://www.specup.kro.kr/api/signlanguage?title=${store.state.searchText}`)
         const Data = res.data
         const Response = res.status
-        console.log(res)
 
         if (Response == 200) {
             let searched = []
             Data.forEach(item => {
                 if (item.fields.title.includes(store.state.searchText)) {
-                    searched.push(item.fields)
+                    searched.push(item)
                 }
             })
             if (!searched.length) {
@@ -48,11 +47,11 @@ export const searchVideos = async page => {
     
 }
 
-export const getVideoDetails = async title => {
-    // title 값을 받아서 store.state.videos 내 해당 video를 검색하고 발견하면 상태에 할당
+export const getVideoDetails = pk => {
+    // pk 값을 받아서 store.state.videos 내 해당 video를 검색하고 발견하면 상태에 할당
     try {
         store.state.videos.forEach(v => {
-            if (v['title'] === title) {
+            if (v.pk === pk) {
                 store.state.video = v
             }
         })
