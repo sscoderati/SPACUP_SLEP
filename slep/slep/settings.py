@@ -170,7 +170,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 CACHES = {  
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-service:6379"
+        "LOCATION": "redis://redis-service-slep:6379"
     }
 }
 
@@ -187,3 +187,4 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://*.specup.kro.kr",
 ]
+CORS_ALLOW_ALL_ORIGINS = True

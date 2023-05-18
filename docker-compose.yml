@@ -7,51 +7,26 @@ services:
       - ./slep:/app
     networks:
       - db_network
-      - web_network
     command: sh -c "python manage.py makemigrations && 
               python manage.py migrate && 
-              python manage.py collectstatic --no-input &&
-              gunicorn --config gunicorn-cfg.py slep.wsgi --reload "
+              python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
 
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASS=changeme
+      - API_KEY=specup-slep
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
     depends_on:
-      - db
       - redis
-
-  nginx:
-    container_name: nginx
-    image: "nginx:latest"
-    ports:
-      - "5085:5085"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./slep/static:/static
-    networks:
-      - web_network
-    depends_on: 
-      - appseed-app
-
-  db:
-    image: postgres:13-alpine
-    volumes:
-      - slep-db-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=devuser
-      - POSTGRES_PASSWORD=changeme
-      - POSTGRES_DB=devdb
-    networks:
-      - db_network
-
   redis:
     image: redis
-    container_name: redis-service
+    container_name: redis-service-slep
     ports:
       - "6379:6379"
     networks:
@@ -59,8 +34,6 @@ services:
 
 networks:
   db_network:
-    driver: bridge
-  web_network:
     driver: bridge
  
 volumes:
