@@ -11,6 +11,10 @@ export default class TheHeader extends Component {
                         href: '#/'
                     },
                     {
+                        name: 'Learn',
+                        href: '#/learn'
+                    },
+                    {
                         name: 'About',
                         href: '#/about'
                     }
