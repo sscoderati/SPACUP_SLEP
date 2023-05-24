@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sscoderati/SPACUP_SLEP#readme",
   "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.0",
     "axios": "^1.4.0",
     "lodash": "^4.17.21"
   },
