@@ -10,6 +10,11 @@ import os
 from django.core import serializers
 from django.http import HttpResponse
 from api.utils import run
+from datetime import timedelta
+import time
+from keras.models import load_model, save_model
+import numpy as np
+from tensorflow.keras.utils import to_categorical
 
 PROXY_URL = f'http://api.kcisa.kr/openapi/service/rest/meta13/getCTE01701?serviceKey={settings.API_KEY}&numOfRows=12500'
 
@@ -90,10 +95,39 @@ def post_array_len_90(request, data:DataArraySchema):
         return JsonResponse({'code':400, 'message': 'bad request'})
     res = []
     for i in data.array:
-        res.append(run(i))
-
+        action, ratio = run(i)
+        if ratio >= 0.7:
+            while True:
+                if cache.set(timedelta.total_seconds(), '1', 2 ,nx = True):
+                    data = cache.get('total_data')
+                    data.append((action,i))
+                    cache.set('total_data', data, 60*60*24)
+                    break
+                else:
+                    time.sleep(0.05)
+        res.append((action,ratio))
+                  
     return JsonResponse({'code':200, 'data': res}, safe=False)
+
+@api.post('/learning')
+def learn_models(request, key:APIkey):
+    if not key.apikey or key.apikey != os.environ.get("API_KEY"):
+        return JsonResponse({'code':401, 'message': 'unauthorize'})
+    while True:
+      if cache.set(timedelta.total_seconds(), '1', 2 ,nx = True):
+          data = cache.get('total_data')
+          data = []
+          cache.set('total_data',data,60*60*24)
+          break
+      else:
+          time.sleep(0.05)
+    model = load_model(f'{settings.BASE_DIR}/논문test.h5')# 
+
+    model.fit(np.array(filter(lambda x: x[0], data)), to_categorical(list(filter(lambda x: x[1]))).astype(int), epochs=800)
+
+    model.save('논문test.h5')
     
+    return
     
 
 urlpatterns = [

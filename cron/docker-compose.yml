@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - CRON_ENTRY=* * * * * python script_for_parse.py
