@@ -9,6 +9,7 @@ from django.http import JsonResponse
 import os
 from django.core import serializers
 from django.http import HttpResponse
+from api.utils import run
 
 PROXY_URL = f'http://api.kcisa.kr/openapi/service/rest/meta13/getCTE01701?serviceKey={settings.API_KEY}&numOfRows=12500'
 
@@ -69,7 +70,7 @@ def save_lang(request, key:APIkey):
         
 
   
-@api.get('/signlanguage')
+@api.get('/sign-language')
 def get_signlanguage(request, title:str):
     if not title:
         return JsonResponse({'code':400, 'message': 'bad request'})
@@ -81,12 +82,16 @@ def get_signlanguage(request, title:str):
 
 class DataArraySchema(Schema):
     array:list
+    name:str
 
-@api.post('/array')
-def post_array_len_30(request, data:DataArraySchema):
-    if len(data.array) != 30:
+@api.post('/evaluation')
+def post_array_len_90(request, data:DataArraySchema):
+    if len(data.array) != 3:
         return JsonResponse({'code':400, 'message': 'bad request'})
-    
+    res = []
+    for i in data.array:
+        res.append(run(i))
+
     return JsonResponse({'code':200, 'data': data.array}, safe=False)
     
     

@@ -32,6 +32,16 @@ services:
     networks:
       - db_network
 
+  nginx:
+    container_name: nginx
+    image: "nginx:latest"
+    ports:
+      - "5085:5085"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+  depends_on: 
+      - appseed-app
+
 networks:
   db_network:
     driver: bridge

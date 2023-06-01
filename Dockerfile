@@ -12,3 +12,5 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./slep /app
+
+ENTRYPOINT ["bash", "/usr/local/bin/build.sh"]
