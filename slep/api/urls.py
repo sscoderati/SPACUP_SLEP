@@ -92,7 +92,7 @@ def post_array_len_90(request, data:DataArraySchema):
     for i in data.array:
         res.append(run(i))
 
-    return JsonResponse({'code':200, 'data': data.array}, safe=False)
+    return JsonResponse({'code':200, 'data': res}, safe=False)
     
     
 
