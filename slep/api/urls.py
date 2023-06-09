@@ -97,7 +97,7 @@ def post_array_len_90(request, data:DataArraySchema):
 
     for i in data.array:
         action, ratio = run(i)
-        res.append((action,ratio))
+        res.append([action,ratio])
 
     return res
 
