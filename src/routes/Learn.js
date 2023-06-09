@@ -7,7 +7,8 @@ export default class Learn extends Component {
         this.el.classList.add('container', 'learn')
         this.el.innerHTML = /* html */ `
             <div>
-                Learning Page
+                <p>Learning Page</p>
+                <p>(웹캠 화면이 나오지 않으면 새로고침 해주세요~)</p>
             </div>
         `
         this.el.append(

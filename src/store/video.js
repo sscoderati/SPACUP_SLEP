@@ -19,7 +19,7 @@ export const searchVideos = async page => {
         store.state.message = ''
     }
     try {
-        const res = await axios.get(`https://www.specup.kro.kr/api/signlanguage?title=${store.state.searchText}`)
+        const res = await axios.get(`https://www.specup.kro.kr/api/sign-language?title=${store.state.searchText}`)
         const Data = res.data
         const Response = res.status
 

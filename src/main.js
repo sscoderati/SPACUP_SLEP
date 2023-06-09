@@ -1,3 +1,4 @@
+import axios from "axios";
 import App from "./App";
 import router from './routes'
 import { HandLandmarker } from "@mediapipe/tasks-vision";
@@ -73,7 +74,9 @@ function enableCam(event) {
 
 let lastVideoTime = -1;
 let results = undefined;
-console.log(video);
+let lmBundle = []
+let data = []
+
 async function predictWebcam() {
     canvasElement.style.width = video.videoWidth;;
     canvasElement.style.height = video.videoHeight;
@@ -95,11 +98,27 @@ async function predictWebcam() {
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     if (results.landmarks) {
         for (const landmarks of results.landmarks) {
+            const res = landmarks.map((value) => {
+                return Object.values(value)
+            })
+            lmBundle.push(res)
             drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
                 color: "#07C8BB",
                 lineWidth: 3
             });
             drawLandmarks(canvasCtx, landmarks, { color: "#378AD1", lineWidth: 2 });
+            // if (lmBundle.length === 30) {
+            //     console.log(123123123);
+            //     data.push(lmBundle)
+            //     lmBundle = []
+            //     if (data.length === 3) {
+            //         const ret = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: data, name: "name"})
+            //         lmBundle = []
+            //         console.log(data)
+            //         console.log(ret)
+            //         data = []
+            //     }
+            // }
         }
     }
     canvasCtx.restore();
