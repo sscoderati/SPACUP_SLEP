@@ -94,22 +94,11 @@ def post_array_len_90(request, data:DataArraySchema):
     if len(data.array) != 3:
         return JsonResponse({'code':400, 'message': 'bad request'})
     res = []
-    try:
-      for i in data.array:
-          action, ratio = run(i)
-          if ratio >= 0.7:
-              while True:
-                  if cache.set(timedelta.total_seconds(), '1', 2 ,nx = True):
-                      data = cache.get('total_data')
-                      data.append((action,i))
-                      cache.set('total_data', data, 60*60*24)
-                      break
-                  else:
-                      time.sleep(0.05)
-          res.append((action,ratio))
-    except:
-        return JsonResponse({'data' : data.array}, safe=False)
-                  
+
+    for i in data.array:
+        action, ratio = run(i)
+        res.append((action,ratio))
+
     return JsonResponse({'code':200, 'data': res}, safe=False)
 
 @api.post('/learning')
