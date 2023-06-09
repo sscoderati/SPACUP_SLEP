@@ -99,7 +99,7 @@ def post_array_len_90(request, data:DataArraySchema):
         action, ratio = run(i)
         res.append((action,ratio))
 
-    return JsonResponse({'code':200, 'data': res}, safe=False)
+    return JsonResponse(res, safe=False)
 
 @api.post('/learning')
 def learn_models(request, key:APIkey):
