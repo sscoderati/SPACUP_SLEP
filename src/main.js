@@ -76,6 +76,8 @@ let lastVideoTime = -1;
 let results = undefined;
 let lmBundle = []
 let data = []
+let tmp = []
+let result = []
 
 async function predictWebcam() {
     canvasElement.style.width = video.videoWidth;;
@@ -99,26 +101,29 @@ async function predictWebcam() {
     if (results.landmarks) {
         for (const landmarks of results.landmarks) {
             const res = landmarks.map((value) => {
-                return Object.values(value)
+                for (const i of Object.values(value)) {
+                    tmp.push(i)
+                }
             })
-            lmBundle.push(res)
+
+            if (tmp.length === 126) { 
+                data.push(tmp)
+                tmp = []
+                if (data.length === 30) {
+                    result.push(data)
+                    data = []
+                    if (result.length === 3) {
+                        const ret = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: result, name: "name"})
+                        console.log(ret)
+                        result = []
+                    }
+                }
+            }
             drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
                 color: "#07C8BB",
                 lineWidth: 3
             });
             drawLandmarks(canvasCtx, landmarks, { color: "#378AD1", lineWidth: 2 });
-            // if (lmBundle.length === 30) {
-            //     console.log(123123123);
-            //     data.push(lmBundle)
-            //     lmBundle = []
-            //     if (data.length === 3) {
-            //         const ret = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: data, name: "name"})
-            //         lmBundle = []
-            //         console.log(data)
-            //         console.log(ret)
-            //         data = []
-            //     }
-            // }
         }
     }
     canvasCtx.restore();
