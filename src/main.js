@@ -78,6 +78,9 @@ let lmBundle = []
 let data = []
 let tmp = []
 let result = []
+let flag = false
+
+const mapData = ["즐겁다", "행복하다", "만나다", "건강하다", "괜찮다", "맞다"]
 
 async function predictWebcam() {
     canvasElement.style.width = video.videoWidth;;
@@ -106,16 +109,15 @@ async function predictWebcam() {
                 }
             })
 
-            if (tmp.length === 126) { 
+            if (tmp.length === 126) {
                 data.push(tmp)
                 tmp = []
                 if (data.length === 30) {
                     result.push(data)
                     data = []
-                    if (result.length === 3) {
-                        const ret = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: result, name: "name"})
-                        console.log(ret)
-                        result = []
+                    if (result.length >= 3) {
+                        flag = true
+                        // const ret = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: result, name: "name"})
                     }
                 }
             }
@@ -133,3 +135,27 @@ async function predictWebcam() {
         window.requestAnimationFrame(predictWebcam);
     }
 }
+
+async function test() {
+    if (flag) {
+        flag = false
+        let tmp = [result.shift(), result.shift(), result.shift()]
+        const { data } = await axios.post("https://www.specup.kro.kr/api/evaluation", {array: tmp, name: "name"})
+        const resList = data.replaceAll('[', '').replaceAll(']', '').replaceAll(' ', '').split(',')
+        
+        if (resList) {
+            let maxReli = "0"
+            let maxIdx = 0
+            for (let i = 1; i < resList.length; i += 2) {
+                if (maxReli < resList[i]) {
+                    maxReli = resList[i]
+                    maxIdx = i - 1
+                }
+            }
+            console.log(mapData[resList[maxIdx]], maxReli)
+        }
+        
+    }
+}
+
+setInterval(test, 500)
