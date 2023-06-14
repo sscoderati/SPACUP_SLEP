@@ -32,6 +32,7 @@ createHandLandmarker();
 const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas")
 const canvasCtx = canvasElement.getContext("2d");
+const reliLabel = document.createElement()
 
 // Check if webcam access is supported.
 const hasGetUserMedia = () => !!navigator.mediaDevices?.getUserMedia;
@@ -136,7 +137,7 @@ async function predictWebcam() {
     }
 }
 
-async function test() {
+async function calcReli() {
     if (flag) {
         flag = false
         let tmp = [result.shift(), result.shift(), result.shift()]
@@ -158,4 +159,4 @@ async function test() {
     }
 }
 
-setInterval(test, 500)
+setInterval(calcReli, 500)
