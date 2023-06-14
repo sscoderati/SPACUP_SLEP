@@ -33,6 +33,7 @@ const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas")
 const canvasCtx = canvasElement.getContext("2d");
 
+
 // Check if webcam access is supported.
 const hasGetUserMedia = () => !!navigator.mediaDevices?.getUserMedia;
 
@@ -136,7 +137,7 @@ async function predictWebcam() {
     }
 }
 
-async function test() {
+async function calcReli() {
     if (flag) {
         flag = false
         let tmp = [result.shift(), result.shift(), result.shift()]
@@ -153,9 +154,11 @@ async function test() {
                 }
             }
             console.log(mapData[resList[maxIdx]], maxReli)
+            document.querySelector("#label").innerText = mapData[resList[maxIdx]]
+            document.querySelector("#reli").innerText = maxReli
         }
         
     }
 }
 
-setInterval(test, 500)
+setInterval(calcReli, 500)
