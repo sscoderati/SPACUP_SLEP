@@ -75,7 +75,7 @@ def save_lang(request, key:APIkey):
         
 
   
-@api.get('/sign-language')
+@api.get('/signlanguage')
 def get_signlanguage(request, title:str):
     if not title:
         return JsonResponse({'code':400, 'message': 'bad request'})
