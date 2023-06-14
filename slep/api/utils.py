@@ -1,7 +1,7 @@
 from keras.models import load_model, save_model
 import numpy as np
 from django.conf import settings
-actions = [1,2,3,4,5,6,7,8,9,0]
+actions = [1,2,3,4,5,6]
 #tensorflow = 2.10.0, numpy = 1.21.6 사용했습니다.
 
 
