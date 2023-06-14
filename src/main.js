@@ -32,7 +32,7 @@ createHandLandmarker();
 const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas")
 const canvasCtx = canvasElement.getContext("2d");
-const reliLabel = document.createElement()
+
 
 // Check if webcam access is supported.
 const hasGetUserMedia = () => !!navigator.mediaDevices?.getUserMedia;
@@ -154,6 +154,8 @@ async function calcReli() {
                 }
             }
             console.log(mapData[resList[maxIdx]], maxReli)
+            document.querySelector("#label").innerText = mapData[resList[maxIdx]]
+            document.querySelector("#reli").innerText = maxReli
         }
         
     }
