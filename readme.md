@@ -9,7 +9,7 @@
 - 손 모양의 뼈대 좌표 데이터를 기존에 몇 가지 수어 표현을 학습한 머신러닝 모델이 분석하여 유사도를 실시간으로 피드백 (미완성)
 
 ### 포스터
-![SLEP_Poster](https://github.com/sscoderati/SPACUP_SLEP/assets/69716992/fd402c52-ec63-4cef-8d49-0444cd8dad32)
+<img height="640" width="480" src="https://github.com/sscoderati/SPACUP_SLEP/assets/69716992/fd402c52-ec63-4cef-8d49-0444cd8dad32" />
 
 ### 발표 영상
-[링크](https://drive.google.com/file/d/1r06KRZ_gcGqbjSI9mER5fgUhaWfXvoad/view?usp=sharing)
+[![Video_Thumbnail](https://github.com/sscoderati/SPACUP_SLEP/assets/69716992/8ed4ee07-48a9-4912-be06-faa84937cc8f)](https://youtu.be/yzFxeSA_0uI)
